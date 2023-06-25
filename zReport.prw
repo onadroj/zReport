@@ -3,7 +3,7 @@
 #Include "TopConn.ch"
 
 //Constantes
-#Define STR_PULA		Chr(13)+Chr(10)
+#Define ENTER		Chr(13)+Chr(10)
 
 /*/{Protheus.doc} zReport
 Função que gera TOTVS Report de forma genérica
@@ -485,132 +485,132 @@ Static Function fCriaPrw()
 	//Senão gera o conteúdo do arquivo
 	Else
 		//Cabeçalho
-		fWrite(nHdl, '//Bibliotecas' + STR_PULA)
-		fWrite(nHdl, '#Include "Protheus.ch"' + STR_PULA)
-		fWrite(nHdl, '#Include "TopConn.ch"' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, '//Constantes' + STR_PULA)
-		fWrite(nHdl, '#Define STR_PULA		Chr(13)+Chr(10)' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, '/*/{Protheus.doc} ' + Alltrim(cGetUserF) + STR_PULA)
-		fWrite(nHdl, 'Relatório - ' + cGetTitul + STR_PULA)
-		fWrite(nHdl, '@author ' + cAutor + STR_PULA)
-		fWrite(nHdl, '@since ' + cData + STR_PULA)
-		fWrite(nHdl, '@version 1.0' + STR_PULA)
-		fWrite(nHdl, '	@example' + STR_PULA)
-		fWrite(nHdl, '	u_'+Alltrim(cGetUserF)+'()' + STR_PULA)
-		fWrite(nHdl, '	@obs Função gerada pelo zReport()' + STR_PULA)
-		fWrite(nHdl, '/*/' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
+		fWrite(nHdl, '//Bibliotecas' + ENTER)
+		fWrite(nHdl, '#Include "Protheus.ch"' + ENTER)
+		fWrite(nHdl, '#Include "TopConn.ch"' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, '//Constantes' + ENTER)
+		fWrite(nHdl, '#Define ENTER		Chr(13)+Chr(10)' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, '/*/{Protheus.doc} ' + Alltrim(cGetUserF) + ENTER)
+		fWrite(nHdl, 'Relatório - ' + cGetTitul + ENTER)
+		fWrite(nHdl, '@author ' + cAutor + ENTER)
+		fWrite(nHdl, '@since ' + cData + ENTER)
+		fWrite(nHdl, '@version 1.0' + ENTER)
+		fWrite(nHdl, '	@example' + ENTER)
+		fWrite(nHdl, '	u_'+Alltrim(cGetUserF)+'()' + ENTER)
+		fWrite(nHdl, '	@obs Função gerada pelo zReport()' + ENTER)
+		fWrite(nHdl, '/*/' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
 		
 		//Função principal
-		fWrite(nHdl, 'User Function '+Alltrim(cGetUserF)+'()' + STR_PULA)
-		fWrite(nHdl, '	Local aArea   := GetArea()' + STR_PULA)
-		fWrite(nHdl, '	Local oReport' + STR_PULA)
-		fWrite(nHdl, '	Local lEmail  := .F.' + STR_PULA)
-		fWrite(nHdl, '	Local cPara   := "'+Alltrim(cGetEmail)+'"' + STR_PULA)
-		fWrite(nHdl, '	Private cPerg := ""' + STR_PULA)
+		fWrite(nHdl, 'User Function '+Alltrim(cGetUserF)+'()' + ENTER)
+		fWrite(nHdl, '	Local aArea   := GetArea()' + ENTER)
+		fWrite(nHdl, '	Local oReport' + ENTER)
+		fWrite(nHdl, '	Local lEmail  := .F.' + ENTER)
+		fWrite(nHdl, '	Local cPara   := "'+Alltrim(cGetEmail)+'"' + ENTER)
+		fWrite(nHdl, '	Private cPerg := ""' + ENTER)
 		
 		//Se utilizar grupo de pergunta
 		If cCmbUtili == 'S'
-			fWrite(nHdl, '	' + STR_PULA)
-			fWrite(nHdl, '	//Definições da pergunta' + STR_PULA)
-			fWrite(nHdl, '	cPerg := "'+cGetPergu+'"' + STR_PULA)
-			fWrite(nHdl, '	' + STR_PULA)
-			fWrite(nHdl, '	//Se a pergunta não existir, zera a variável' + STR_PULA)
-			fWrite(nHdl, '	DbSelectArea("SX1")' + STR_PULA)
-			fWrite(nHdl, '	SX1->(DbSetOrder(1)) //X1_GRUPO + X1_ORDEM' + STR_PULA)
-			fWrite(nHdl, '	If ! SX1->(DbSeek(cPerg))' + STR_PULA)
-			fWrite(nHdl, '		cPerg := Nil' + STR_PULA)
-			fWrite(nHdl, '	EndIf' + STR_PULA)
+			fWrite(nHdl, '	' + ENTER)
+			fWrite(nHdl, '	//Definições da pergunta' + ENTER)
+			fWrite(nHdl, '	cPerg := "'+cGetPergu+'"' + ENTER)
+			fWrite(nHdl, '	' + ENTER)
+			fWrite(nHdl, '	//Se a pergunta não existir, zera a variável' + ENTER)
+			fWrite(nHdl, '	DbSelectArea("SX1")' + ENTER)
+			fWrite(nHdl, '	SX1->(DbSetOrder(1)) //X1_GRUPO + X1_ORDEM' + ENTER)
+			fWrite(nHdl, '	If ! SX1->(DbSeek(cPerg))' + ENTER)
+			fWrite(nHdl, '		cPerg := Nil' + ENTER)
+			fWrite(nHdl, '	EndIf' + ENTER)
 		EndIf
 		
 		//Se utiliza disparo por e-Mail
 		If cCmbEnvia == 'S'
-			fWrite(nHdl, '	' + STR_PULA)
-			fWrite(nHdl, '	//Será enviado por e-Mail' + STR_PULA)
-			fWrite(nHdl, '	lEmail := .T.' + STR_PULA)
+			fWrite(nHdl, '	' + ENTER)
+			fWrite(nHdl, '	//Será enviado por e-Mail' + ENTER)
+			fWrite(nHdl, '	lEmail := .T.' + ENTER)
 		EndIf
 		
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, '	//Cria as definições do relatório' + STR_PULA)
-		fWrite(nHdl, '	oReport := fReportDef()' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, '	//Será enviado por e-Mail?' + STR_PULA)
-		fWrite(nHdl, '	If lEmail' + STR_PULA)
-		fWrite(nHdl, '		oReport:nRemoteType := NO_REMOTE' + STR_PULA)
-		fWrite(nHdl, '		oReport:cEmail := cPara' + STR_PULA)
-		fWrite(nHdl, '		oReport:nDevice := 3 //1-Arquivo,2-Impressora,3-email,4-Planilha e 5-Html' + STR_PULA)
-		fWrite(nHdl, '		oReport:SetPreview(.F.)' + STR_PULA)
-		fWrite(nHdl, '		oReport:Print(.F., "", .T.)' + STR_PULA)
-		fWrite(nHdl, '	//Senão, mostra a tela' + STR_PULA)
-		fWrite(nHdl, '	Else' + STR_PULA)
-		fWrite(nHdl, '		oReport:PrintDialog()' + STR_PULA)
-		fWrite(nHdl, '	EndIf' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, '	RestArea(aArea)' + STR_PULA)
-		fWrite(nHdl, 'Return' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, '	//Cria as definições do relatório' + ENTER)
+		fWrite(nHdl, '	oReport := fReportDef()' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, '	//Será enviado por e-Mail?' + ENTER)
+		fWrite(nHdl, '	If lEmail' + ENTER)
+		fWrite(nHdl, '		oReport:nRemoteType := NO_REMOTE' + ENTER)
+		fWrite(nHdl, '		oReport:cEmail := cPara' + ENTER)
+		fWrite(nHdl, '		oReport:nDevice := 3 //1-Arquivo,2-Impressora,3-email,4-Planilha e 5-Html' + ENTER)
+		fWrite(nHdl, '		oReport:SetPreview(.F.)' + ENTER)
+		fWrite(nHdl, '		oReport:Print(.F., "", .T.)' + ENTER)
+		fWrite(nHdl, '	//Senão, mostra a tela' + ENTER)
+		fWrite(nHdl, '	Else' + ENTER)
+		fWrite(nHdl, '		oReport:PrintDialog()' + ENTER)
+		fWrite(nHdl, '	EndIf' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, '	RestArea(aArea)' + ENTER)
+		fWrite(nHdl, 'Return' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
 		
 		//Definições do relatório
-		fWrite(nHdl, '/*-------------------------------------------------------------------------------*' + STR_PULA)
-		fWrite(nHdl, ' | Func:  fReportDef                                                             |' + STR_PULA)
-		fWrite(nHdl, ' | Desc:  Função que monta a definição do relatório                              |' + STR_PULA)
-		fWrite(nHdl, ' *-------------------------------------------------------------------------------*/' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, 'Static Function fReportDef()' + STR_PULA)
-		fWrite(nHdl, '	Local oReport' + STR_PULA)
-		fWrite(nHdl, '	Local oSectDad := Nil' + STR_PULA)
-		fWrite(nHdl, '	Local oBreak := Nil' + STR_PULA)
+		fWrite(nHdl, '/*-------------------------------------------------------------------------------*' + ENTER)
+		fWrite(nHdl, ' | Func:  fReportDef                                                             |' + ENTER)
+		fWrite(nHdl, ' | Desc:  Função que monta a definição do relatório                              |' + ENTER)
+		fWrite(nHdl, ' *-------------------------------------------------------------------------------*/' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, 'Static Function fReportDef()' + ENTER)
+		fWrite(nHdl, '	Local oReport' + ENTER)
+		fWrite(nHdl, '	Local oSectDad := Nil' + ENTER)
+		fWrite(nHdl, '	Local oBreak := Nil' + ENTER)
 		
 		//Se tiver totalizadores
 		If lChkTot .And. Len(aDadTot) > 0
 			For nAtual := 1 To Len(aDadTot)
 				//Se tiver campo válido
 				If !Empty(aDadTot[nAtual][nPos2Cam])
-					fWrite(nHdl, '	Local oFunTot'+cValToChar(nAtual)+' := Nil' + STR_PULA)
+					fWrite(nHdl, '	Local oFunTot'+cValToChar(nAtual)+' := Nil' + ENTER)
 				EndIf
 			Next
 		EndIf
 		
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, '	//Criação do componente de impressão' + STR_PULA)
-		fWrite(nHdl, '	oReport := TReport():New(	"'+Alltrim(cGetUserF)+'",;		//Nome do Relatório' + STR_PULA)
-		fWrite(nHdl, '								"'+Alltrim(cGetTitul)+'",;		//Título' + STR_PULA)
-		fWrite(nHdl, '								cPerg,;		//Pergunte ... Se eu defino a pergunta aqui, será impresso uma página com os parâmetros, conforme privilégio 101' + STR_PULA)
-		fWrite(nHdl, '								{|oReport| fRepPrint(oReport)},;		//Bloco de código que será executado na confirmação da impressão' + STR_PULA)
-		fWrite(nHdl, '								)		//Descrição' + STR_PULA)
-		fWrite(nHdl, '	oReport:SetTotalInLine(.F.)' + STR_PULA)
-		fWrite(nHdl, '	oReport:lParamPage := .F.' + STR_PULA)
-		fWrite(nHdl, '	oReport:oPage:SetPaperSize(9) //Folha A4' + STR_PULA)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, '	//Criação do componente de impressão' + ENTER)
+		fWrite(nHdl, '	oReport := TReport():New(	"'+Alltrim(cGetUserF)+'",;		//Nome do Relatório' + ENTER)
+		fWrite(nHdl, '								"'+Alltrim(cGetTitul)+'",;		//Título' + ENTER)
+		fWrite(nHdl, '								cPerg,;		//Pergunte ... Se eu defino a pergunta aqui, será impresso uma página com os parâmetros, conforme privilégio 101' + ENTER)
+		fWrite(nHdl, '								{|oReport| fRepPrint(oReport)},;		//Bloco de código que será executado na confirmação da impressão' + ENTER)
+		fWrite(nHdl, '								)		//Descrição' + ENTER)
+		fWrite(nHdl, '	oReport:SetTotalInLine(.F.)' + ENTER)
+		fWrite(nHdl, '	oReport:lParamPage := .F.' + ENTER)
+		fWrite(nHdl, '	oReport:oPage:SetPaperSize(9) //Folha A4' + ENTER)
 		
 		//Se for Retrato
 		If cCmbOrien == 'R'
-			fWrite(nHdl, '	oReport:SetPortrait()' + STR_PULA)
+			fWrite(nHdl, '	oReport:SetPortrait()' + ENTER)
 		
 		//Se for Paisagem
 		ElseIf cCmbOrien == 'P'
-			fWrite(nHdl, '	oReport:SetLandscape()' + STR_PULA)
+			fWrite(nHdl, '	oReport:SetLandscape()' + ENTER)
 		EndIf
 		
 		//Se a fonte for tamanho 8
 		If cCmbFonte == '1'
-			fWrite(nHdl, '	oReport:SetLineHeight(50)' + STR_PULA)
-			fWrite(nHdl, '	oReport:nFontBody := 08' + STR_PULA)
+			fWrite(nHdl, '	oReport:SetLineHeight(50)' + ENTER)
+			fWrite(nHdl, '	oReport:nFontBody := 08' + ENTER)
 		
 		//Se a fonte for tamanho 12
 		ElseIf cCmbFonte == '2'
-			fWrite(nHdl, '	oReport:SetLineHeight(60)' + STR_PULA)
-			fWrite(nHdl, '	oReport:nFontBody := 12' + STR_PULA)
+			fWrite(nHdl, '	oReport:SetLineHeight(60)' + ENTER)
+			fWrite(nHdl, '	oReport:nFontBody := 12' + ENTER)
 		EndIf
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, '	//Criando a seção de dados' + STR_PULA)
-		fWrite(nHdl, '	oSectDad := TRSection():New(	oReport,;		//Objeto TReport que a seção pertence' + STR_PULA)
-		fWrite(nHdl, '									"Dados",;		//Descrição da seção' + STR_PULA)
-		fWrite(nHdl, '									{"QRY_AUX"})		//Tabelas utilizadas, a primeira será considerada como principal da seção' + STR_PULA)
-		fWrite(nHdl, '	oSectDad:SetTotalInLine(.F.)  //Define se os totalizadores serão impressos em linha ou coluna. .F.=Coluna; .T.=Linha' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, '	//Colunas do relatório' + STR_PULA)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, '	//Criando a seção de dados' + ENTER)
+		fWrite(nHdl, '	oSectDad := TRSection():New(	oReport,;		//Objeto TReport que a seção pertence' + ENTER)
+		fWrite(nHdl, '									"Dados",;		//Descrição da seção' + ENTER)
+		fWrite(nHdl, '									{"QRY_AUX"})		//Tabelas utilizadas, a primeira será considerada como principal da seção' + ENTER)
+		fWrite(nHdl, '	oSectDad:SetTotalInLine(.F.)  //Define se os totalizadores serão impressos em linha ou coluna. .F.=Coluna; .T.=Linha' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, '	//Colunas do relatório' + ENTER)
 		
 		//Se foi informado as colunas manualmente
 		If lChkEdit .And. Len(aDadCel) > 0
@@ -715,7 +715,7 @@ Static Function fCriaPrw()
 							'/*lAutoSize*/,'+;
 							cFundo+','+;
 							cFonte+','+;
-							cNegrito+')' + STR_PULA)
+							cNegrito+')' + ENTER)
 					EndIf
 				EndIf
 			Next
@@ -750,16 +750,16 @@ Static Function fCriaPrw()
 					'/*lAutoSize*/,'+;
 					'/*nClrBack*/,'+;
 					'/*nClrFore*/,'+;
-					'/*lBold*/)' + STR_PULA)
+					'/*lBold*/)' + ENTER)
 			Next
 		EndIf
 		
 		//Se tiver quebra
 		If !Empty(cGetQuebr)
-			fWrite(nHdl, '	' + STR_PULA)
-			fWrite(nHdl, '	//Definindo a quebra' + STR_PULA)
-			fWrite(nHdl, '	oBreak := TRBreak():New(oSectDad,{|| QRY_AUX->('+Alltrim(cGetQuebr)+') },{|| "SEPARACAO DO RELATORIO" })' + STR_PULA)
-			fWrite(nHdl, '	oSectDad:SetHeaderBreak(.T.)' + STR_PULA)
+			fWrite(nHdl, '	' + ENTER)
+			fWrite(nHdl, '	//Definindo a quebra' + ENTER)
+			fWrite(nHdl, '	oBreak := TRBreak():New(oSectDad,{|| QRY_AUX->('+Alltrim(cGetQuebr)+') },{|| "SEPARACAO DO RELATORIO" })' + ENTER)
+			fWrite(nHdl, '	oSectDad:SetHeaderBreak(.T.)' + ENTER)
 			cQuebra := "oBreak"
 		Else
 			cQuebra := ""
@@ -767,12 +767,12 @@ Static Function fCriaPrw()
 		
 		//Se tiver totalizadores
 		If lChkTot .And. Len(aDadTot) > 0
-			fWrite(nHdl, '	' + STR_PULA)
+			fWrite(nHdl, '	' + ENTER)
 			For nAtual := 1 To Len(aDadTot)
 				//Se tiver campo válido
 				If !Empty(aDadTot[nAtual][nPos2Cam])
 					If lFirst
-						fWrite(nHdl, '	//Totalizadores' + STR_PULA)
+						fWrite(nHdl, '	//Totalizadores' + ENTER)
 						lFirst := .F.
 					EndIf
 					
@@ -797,45 +797,45 @@ Static Function fCriaPrw()
 					EndIf
 					
 					//Adiciona a função
-					fWrite(nHdl, '	oFunTot'+cValToChar(nAtual)+' := TRFunction():New(oSectDad:Cell("'+Alltrim(aDadTot[nAtual][nPos2Cam])+'"),,'+cTotal+','+cQuebra+',,'+cPicture+')' + STR_PULA)
-					fWrite(nHdl, '	oFunTot'+cValToChar(nAtual)+':SetEndReport(.F.)' + STR_PULA)
+					fWrite(nHdl, '	oFunTot'+cValToChar(nAtual)+' := TRFunction():New(oSectDad:Cell("'+Alltrim(aDadTot[nAtual][nPos2Cam])+'"),,'+cTotal+','+cQuebra+',,'+cPicture+')' + ENTER)
+					fWrite(nHdl, '	oFunTot'+cValToChar(nAtual)+':SetEndReport(.F.)' + ENTER)
 				EndIf
 			Next
 		EndIf
 	
-		fWrite(nHdl, 'Return oReport' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
+		fWrite(nHdl, 'Return oReport' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
 		
 		//Impressão do relatório
-		fWrite(nHdl, '/*-------------------------------------------------------------------------------*' + STR_PULA)
-		fWrite(nHdl, ' | Func:  fRepPrint                                                              |' + STR_PULA)
-		fWrite(nHdl, ' | Desc:  Função que imprime o relatório                                         |' + STR_PULA)
-		fWrite(nHdl, ' *-------------------------------------------------------------------------------*/' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, 'Static Function fRepPrint(oReport)' + STR_PULA)
-		fWrite(nHdl, '	Local aArea    := GetArea()' + STR_PULA)
-		fWrite(nHdl, '	Local cQryAux  := ""' + STR_PULA)
-		fWrite(nHdl, '	Local oSectDad := Nil' + STR_PULA)
-		fWrite(nHdl, '	Local nAtual   := 0' + STR_PULA)
-		fWrite(nHdl, '	Local nTotal   := 0' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, '	//Pegando as seções do relatório' + STR_PULA)
-		fWrite(nHdl, '	oSectDad := oReport:Section(1)' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, '	//Montando consulta de dados' + STR_PULA)
+		fWrite(nHdl, '/*-------------------------------------------------------------------------------*' + ENTER)
+		fWrite(nHdl, ' | Func:  fRepPrint                                                              |' + ENTER)
+		fWrite(nHdl, ' | Desc:  Função que imprime o relatório                                         |' + ENTER)
+		fWrite(nHdl, ' *-------------------------------------------------------------------------------*/' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, 'Static Function fRepPrint(oReport)' + ENTER)
+		fWrite(nHdl, '	Local aArea    := GetArea()' + ENTER)
+		fWrite(nHdl, '	Local cQryAux  := ""' + ENTER)
+		fWrite(nHdl, '	Local oSectDad := Nil' + ENTER)
+		fWrite(nHdl, '	Local nAtual   := 0' + ENTER)
+		fWrite(nHdl, '	Local nTotal   := 0' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, '	//Pegando as seções do relatório' + ENTER)
+		fWrite(nHdl, '	oSectDad := oReport:Section(1)' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, '	//Montando consulta de dados' + ENTER)
 		
 		//Percorrendo a consulta sql
-		fWrite(nHdl, '	cQryAux := ""' + STR_PULA)
+		fWrite(nHdl, '	cQryAux := ""' + ENTER)
 		For nAtual := 1 To Len(aSQL)
-			fWrite(nHdl, '	cQryAux += "'+(aSQL[nAtual])+'"		+ STR_PULA' + STR_PULA)
+			fWrite(nHdl, '	cQryAux += "'+(aSQL[nAtual])+'"		+ ENTER' + ENTER)
 		Next
-		fWrite(nHdl, '	cQryAux := ChangeQuery(cQryAux)' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
+		fWrite(nHdl, '	cQryAux := ChangeQuery(cQryAux)' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
 		
-		fWrite(nHdl, '	//Executando consulta e setando o total da régua' + STR_PULA)
-		fWrite(nHdl, '	TCQuery cQryAux New Alias "QRY_AUX"' + STR_PULA)
-		fWrite(nHdl, '	Count to nTotal' + STR_PULA)
-		fWrite(nHdl, '	oReport:SetMeter(nTotal)' + STR_PULA)
+		fWrite(nHdl, '	//Executando consulta e setando o total da régua' + ENTER)
+		fWrite(nHdl, '	TCQuery cQryAux New Alias "QRY_AUX"' + ENTER)
+		fWrite(nHdl, '	Count to nTotal' + ENTER)
+		fWrite(nHdl, '	oReport:SetMeter(nTotal)' + ENTER)
 		
 		DbSelectArea('SX3')
 		SX3->(DbSetOrder(2)) //X3_CAMPO
@@ -847,31 +847,31 @@ Static Function fCriaPrw()
 			If SX3->(DbSeek(aStrutAux[nAtual][1]))
 				//Se for campo do tipo data
 				If SX3->X3_TIPO == 'D'
-					fWrite(nHdl, '	TCSetField("QRY_AUX", "'+Alltrim(aStrutAux[nAtual][1])+'", "D")' + STR_PULA)
+					fWrite(nHdl, '	TCSetField("QRY_AUX", "'+Alltrim(aStrutAux[nAtual][1])+'", "D")' + ENTER)
 				EndIf
 			EndIf
 		Next
-		fWrite(nHdl, '	' + STR_PULA)
+		fWrite(nHdl, '	' + ENTER)
 		
-		fWrite(nHdl, '	//Enquanto houver dados' + STR_PULA)
-		fWrite(nHdl, '	oSectDad:Init()' + STR_PULA)
-		fWrite(nHdl, '	QRY_AUX->(DbGoTop())' + STR_PULA)
-		fWrite(nHdl, '	While ! QRY_AUX->(Eof())' + STR_PULA)
-		fWrite(nHdl, '		//Incrementando a régua' + STR_PULA)
-		fWrite(nHdl, '		nAtual++' + STR_PULA)
-		fWrite(nHdl, '		oReport:SetMsgPrint("Imprimindo registro "+cValToChar(nAtual)+" de "+cValToChar(nTotal)+"...")' + STR_PULA)
-		fWrite(nHdl, '		oReport:IncMeter()' + STR_PULA)
-		fWrite(nHdl, '		' + STR_PULA)
-		fWrite(nHdl, '		//Imprimindo a linha atual' + STR_PULA)
-		fWrite(nHdl, '		oSectDad:PrintLine()' + STR_PULA)
-		fWrite(nHdl, '		' + STR_PULA)
-		fWrite(nHdl, '		QRY_AUX->(DbSkip())' + STR_PULA)
-		fWrite(nHdl, '	EndDo' + STR_PULA)
-		fWrite(nHdl, '	oSectDad:Finish()' + STR_PULA)
-		fWrite(nHdl, '	QRY_AUX->(DbCloseArea())' + STR_PULA)
-		fWrite(nHdl, '	' + STR_PULA)
-		fWrite(nHdl, '	RestArea(aArea)' + STR_PULA)
-		fWrite(nHdl, 'Return' + STR_PULA)
+		fWrite(nHdl, '	//Enquanto houver dados' + ENTER)
+		fWrite(nHdl, '	oSectDad:Init()' + ENTER)
+		fWrite(nHdl, '	QRY_AUX->(DbGoTop())' + ENTER)
+		fWrite(nHdl, '	While ! QRY_AUX->(Eof())' + ENTER)
+		fWrite(nHdl, '		//Incrementando a régua' + ENTER)
+		fWrite(nHdl, '		nAtual++' + ENTER)
+		fWrite(nHdl, '		oReport:SetMsgPrint("Imprimindo registro "+cValToChar(nAtual)+" de "+cValToChar(nTotal)+"...")' + ENTER)
+		fWrite(nHdl, '		oReport:IncMeter()' + ENTER)
+		fWrite(nHdl, '		' + ENTER)
+		fWrite(nHdl, '		//Imprimindo a linha atual' + ENTER)
+		fWrite(nHdl, '		oSectDad:PrintLine()' + ENTER)
+		fWrite(nHdl, '		' + ENTER)
+		fWrite(nHdl, '		QRY_AUX->(DbSkip())' + ENTER)
+		fWrite(nHdl, '	EndDo' + ENTER)
+		fWrite(nHdl, '	oSectDad:Finish()' + ENTER)
+		fWrite(nHdl, '	QRY_AUX->(DbCloseArea())' + ENTER)
+		fWrite(nHdl, '	' + ENTER)
+		fWrite(nHdl, '	RestArea(aArea)' + ENTER)
+		fWrite(nHdl, 'Return' + ENTER)
 		fClose(nHdl)
 		
 		//Se o arquivo foi criado
